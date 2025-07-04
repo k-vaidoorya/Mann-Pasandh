@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player - Home</title>
+    <link rel="stylesheet" href="home_style.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script> -->
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Mann Pasandh</div>
+            <ul class="nav-links">
+                
+                <li><a href="music_playlist_library.html">Library</a></li>
+                <li><a href="google.com">Explore</a></li>
+                <li><a href="login_music.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section with Banner -->
+    <section class="home-banner"  style="background-image: url(js_images/music_first_img.jpg); width: 100%;height: 500px;" >
+        <div class="banner-content">
+
+            <h1>Welcome to Mann Pasandh</h1>
+            <p>Your ultimate destination for music and podcasts. Create, explore, and enjoy playlists for every mood!</p>
+            <a href="login_music.html" class="cta-button">Start Listening</a>
+            <br><br><br>
+        </div>
+    </section>
+
+    <!-- Featured Playlists Section -->
+    <section class="featured-playlists">
+        <h2>Featured Playlists</h2>
+        <div class="playlists">
+            <div class="playlist">
+                <img src="js_images/music_chill_vibes.jpg" alt="Playlist 1">
+                <a href="music_chill_vibes.html" style=" color: aliceblue; "><h3>Chill Vibes</h3></a>
+            </div>
+            <div class="playlist">
+                <img src="js_images/music_top_hits.webp" alt="Playlist 2">
+                <a href="music_top_hits.html" style=" color: aliceblue;"><h3>Top Hits 2024</h3></a>
+                
+            </div>
+            <div class="playlist">
+                <img src="js_images/music_party_mode.jpeg" alt="Playlist 3">
+                <a href="music_party_mode.html" style=" color: aliceblue;"><h3>Party Mode</h3></a>
+                
+            </div>
+            <div class="playlist">
+                <img src="js_images/music_relax.jpg" alt="Playlist 4">
+                <a href="music_relax.html" style="color: aliceblue;"><h3>Relax & Unwind</h3></a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Genres Section -->
+    <!-- <section class="genres">
+        <h2>Explore Genres</h2>
+        <div class="genre-list">
+            <div class="genre">Pop</div>
+            <div class="genre">Rock</div>
+            <div class="genre">Jazz</div>
+            <div class="genre">Classical</div>
+            <div class="genre">Hip-Hop</div>
+            <div class="genre">Electronic</div>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+
+    <!-- <script>
+        // Check authentication status
+        const token = localStorage.getItem('token');
+        if (!token && window.location.pathname !== '/login_music.html') {
+            window.location.href = '/login_music.html';
+        }
+
+        // Add logout functionality
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = '/login_music.html';
+        }
+    </script> -->
+
+    <footer>
+        <p>&copy; 2024 MyMusic. All Rights Reserved.</p>
+    </footer>
+    
+</body>
+</html>

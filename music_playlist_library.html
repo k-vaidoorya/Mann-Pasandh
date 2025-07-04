@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Playlist - Music Player</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+        /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #111;
+    color: white;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    width: 250px;
+    background-color: #181818;
+    height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.sidebar h2 {
+    color: #FF6500;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 1.5rem;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: #FF6500;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    background-color: #111;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #FF6500;
+}
+
+/* Playlist Container */
+.playlist-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.playlist {
+    background-color: #181818;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+    border: 1px lightgrey solid ;
+    /* transition: transform 0.3s ease; */
+}
+
+/* .playlist:hover {
+    transform: translateY(-10px);
+} */
+
+.playlist img {
+    width: 100%;
+    border-radius: 5px;
+    /* height: 200px; */
+}
+
+.playlist p {
+    margin-top: 0.8rem;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.play-btn {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #FF6500;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.play-btn:hover {
+    background-color: #FF6500;
+    transform: translateY(-10px);
+}
+
+/* Now Playing Section */
+.now-playing {
+    margin-top: 3rem;
+}
+
+.now-playing h2 {
+    font-size: 1.8rem;
+    color: #FF6500;
+}
+
+.now-playing #nowPlayingInfo {
+    background-color: #181818;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        height: auto;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .playlist-container {
+        justify-content: center;
+    }
+}
+
+     </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2>Mann Pasandh</h2>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="library.html">Your Library</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <!-- <li><a href="myplaylist.html">My Playlist</a></li> -->
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <h1>My Playlist</h1>
+        </div>
+
+        <!-- Playlist Section -->
+        <div class="section">
+            <h2>Saved Playlists</h2>
+            <div class="playlist-container">
+                <div class="playlist">
+                    <img src="js_images/music_fidaa.jpg" alt="Fidaa Image">
+                    <p style="font-size: large;">Fidaa</p>
+                    <button class="play-btn"><a href="music_fidaa_playlist.html" style="text-decoration: none; color:aliceblue ;">Play</a></button>
+                </div>
+                <div class="playlist">
+                    <img src="js_images/music_mad.avif" alt="MAD Image">
+                    <p>MAD</p>
+                    <button class="play-btn"><a href="music_mad_playlist.html" style="text-decoration: none; color:aliceblue ;">Play</a></button>
+                </div>
+                <div class="playlist">
+                    <img src="js_images/Orange movie.jpeg" alt="Orange Image">
+                    <p>Orange</p>
+                    <button class="play-btn"><a href="music_orange_playlist.html" style="text-decoration: none; color:aliceblue ;">Play</a></button>
+                </div>
+                <div class="playlist">
+                    <img src="js_images/music_bommarillu_2.jpg" alt="Bommarillu Image">
+                    <p>Bommarillu</p>
+                    <button class="play-btn"><a href="music_bommarillu_playlist.html" style="text-decoration: none; color:aliceblue ;">Play</a></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Now Playing Section -->
+        <!-- <div class="now-playing">
+            <h2>Now Playing</h2>
+            <div id="nowPlayingInfo">
+                <p>No song is playing</p>
+            </div>
+        </div> -->
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+     <script>
+        // JavaScript to handle playlist button clicks
+document.querySelectorAll('.play-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const playlistTitle = this.previousElementSibling.innerText;
+        document.getElementById('nowPlayingInfo').innerHTML = `<p>Now playing: ${playlistTitle}</p>`;
+    });
+});
+
+     </script>
+
+<script>
+    // Function to fetch playlists
+    async function fetchPlaylists() {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get('http://localhost:3001/api/playlists', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            displayPlaylists(response.data);
+        } catch (error) {
+            console.error('Error fetching playlists:', error);
+            if (error.response && error.response.status === 401) {
+                window.location.href = '/login_music.html';
+            }
+        }
+    }
+
+    // Function to display playlists
+    function displayPlaylists(playlists) {
+        const container = document.querySelector('.playlist-container');
+        container.innerHTML = ''; // Clear existing content
+        
+        playlists.forEach(playlist => {
+            const playlistElement = `
+                <div class="playlist">
+                    <img src="${playlist.coverImage || 'js_images/default_playlist.jpg'}" alt="${playlist.name}">
+                    <p style="font-size: large;">${playlist.name}</p>
+                    <button class="play-btn" onclick="playPlaylist('${playlist._id}')">Play</button>
+                </div>
+            `;
+            container.innerHTML += playlistElement;
+        });
+    }
+
+    // Load playlists when page loads
+    document.addEventListener('DOMContentLoaded', fetchPlaylists);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#song-list {
+    list-style: none;
+    padding: 0;
+}
+
+#song-list li {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#song-list li:hover {
+    background-color: #555;
+}
+
+.player {
+    margin-top: 20px;
+    color: aliceblue;
+}
+
+#track-info {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+     </style>
+</head>
+<body>
+    <h1 style="color: #FF6500;">Mann Pasandh</h1>
+    <div class="container">
+        <h1 style="color: #FF6500;">My Playlist</h1>
+        <h2 style="color: yellow;">MAD</h2>
+        <!-- Song list -->
+        <ul id="song-list">
+            <li data-src="audios/[iSongs.info] 01 - Proud Se Single.mp3" data-title="Proud Se Single" data-artist="Bheems Cecroleo">Proud Se Single</li>
+            <li data-src="audios/[iSongs.info] 02 - Nuvvu Navvukuntu.mp3" data-title="Nuvvu Navvukuntu" data-artist="Bheems Cecroleo">Nuvvu Navvukuntu</li>
+            <li data-src="audios/[iSongs.info] 03 - Malli Malli Rani Roju.mp3" data-title="Malli Malli Rani Roju" data-artist="Bheems Cecroleo">Malli Malli Rani Roju</li>
+            <li data-src="audios/[iSongs.info] 04 - College Papa.mp3" data-title="College Papa" data-artist="Bheems Cecroleo">College Papa</li>
+            
+            
+        </ul>
+
+        <!-- Audio player controls -->
+        <div class="player">
+            <p id="track-info">Select a song to play</p>
+            <audio id="audio" controls>
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+     <script>
+        // Get references to elements
+const audio = document.getElementById('audio');
+const trackInfo = document.getElementById('track-info');
+const songListItems = document.querySelectorAll('#song-list li');
+
+// Function to load and play selected song
+function loadSong(song) {
+    const src = song.getAttribute('data-src');
+    const title = song.getAttribute('data-title');
+    const artist = song.getAttribute('data-artist');
+
+    // Update the audio source and play the song
+    audio.src = src;
+    audio.play();
+
+    // Update the track info display
+    trackInfo.textContent = `Now playing: ${title} by ${artist}`;
+}
+
+// Add click event listener to each song list item
+songListItems.forEach(song => {
+    song.addEventListener('click', () => {
+        loadSong(song);
+    });
+});
+
+     </script>
+</body>
+</html>
